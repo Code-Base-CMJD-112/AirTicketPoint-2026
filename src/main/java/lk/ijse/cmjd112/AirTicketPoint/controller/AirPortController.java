@@ -67,5 +67,12 @@ public class AirPortController {
         System.out.println("Deleted airport: "+airportIdentifier);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @PatchMapping("/{airportId}")
+    public ResponseEntity<Void> updateAirportData(@PathVariable ("airportId") String airportIdentifier, @RequestBody AirportDTO updatedAirport){
+        updatedAirport.setAirportId(airportIdentifier);
+        System.out.println("Updated updatedAirport ID: "+airportIdentifier);
+        System.out.println("Updated updatedAirport details: "+updatedAirport);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 }
