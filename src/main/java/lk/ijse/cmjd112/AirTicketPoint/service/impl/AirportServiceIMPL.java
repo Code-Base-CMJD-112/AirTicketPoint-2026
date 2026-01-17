@@ -19,7 +19,9 @@ public class AirportServiceIMPL implements AirportService {
 
     @Override
     public AirportDTO getSelectedAirport(String airportId) {
-            return null;
+        System.out.println("Airport ID is: "+airportId);
+        return new AirportDTO("APT-f5deaf73-1c27-4be3-98dd-73483ef8cb4e",
+                "CMB", "Bandaranayake International Airport", "Katunayaka", "SL");
     }
 
     @Override
@@ -58,11 +60,14 @@ public class AirportServiceIMPL implements AirportService {
 
     @Override
     public void deleteAirport(String airportId) {
-
+        System.out.println("Deleted airport: "+airportId);
     }
 
     @Override
     public void updateAirport(String airportId, AirportDTO airportDTO) {
+        airportDTO.setAirportId(airportId);
+        System.out.println("Updated updatedAirport ID: "+airportId);
+        System.out.println("Updated updatedAirport details: "+airportDTO);
 
     }
 }

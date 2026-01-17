@@ -29,20 +29,14 @@ public class AirPortController {
 //    public AirPortController(AirportService airportService) {
 //        this.airportService = airportService;
 //    }
-
     //Create an Airport
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AirportDTO> saveAirport(@RequestBody AirportDTO airportDTO){
-//        var airportServiceIMPL = new AirportServiceIMPL();
-        var savedAirport = airportService.saveAirport(airportDTO);
-        return new ResponseEntity<>(savedAirport, HttpStatus.CREATED);
+        return new ResponseEntity<>(airportService.saveAirport(airportDTO), HttpStatus.CREATED);
     }
     @GetMapping(value = "/{airportId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AirportDTO> getAirport(@PathVariable ("airportId") String airportIdentifier){
-        System.out.println("Airport ID is: "+airportIdentifier);
-        var airport = new AirportDTO("APT-f5deaf73-1c27-4be3-98dd-73483ef8cb4e",
-                "CMB", "Bandaranayake International Airport", "Katunayaka", "SL");
-        return new ResponseEntity<>(airport,HttpStatus.OK);
+        return new ResponseEntity<>(airportService.getSelectedAirport(airportIdentifier),HttpStatus.OK);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AirportDTO>> getAllAirports(){
@@ -50,14 +44,12 @@ public class AirPortController {
     }
     @DeleteMapping("/{airportId}")
     public ResponseEntity<Void> deleteAirportData(@PathVariable ("airportId") String airportIdentifier){
-        System.out.println("Deleted airport: "+airportIdentifier);
+        airportService.deleteAirport(airportIdentifier);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @PatchMapping(value = "/{airportId}",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> updateAirportData(@PathVariable ("airportId") String airportIdentifier, @RequestBody AirportDTO updatedAirport){
-        updatedAirport.setAirportId(airportIdentifier);
-        System.out.println("Updated updatedAirport ID: "+airportIdentifier);
-        System.out.println("Updated updatedAirport details: "+updatedAirport);
+        airportService.updateAirport(airportIdentifier,updatedAirport);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
