@@ -62,5 +62,10 @@ public class AirPortController {
         );
         return new ResponseEntity<>(airportList,HttpStatus.OK);
     }
+    @DeleteMapping("/{airportId}")
+    public ResponseEntity<Void> deleteAirportData(@PathVariable ("airportId") String airportIdentifier){
+        System.out.println("Deleted airport: "+airportIdentifier);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 }
