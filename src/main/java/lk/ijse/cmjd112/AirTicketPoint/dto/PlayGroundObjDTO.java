@@ -9,7 +9,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class PlayGroundObj implements Serializable {
+public class PlayGroundObjDTO implements Serializable {
     private String id;
     private String name;
     private String city;

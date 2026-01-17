@@ -1,7 +1,7 @@
 package lk.ijse.cmjd112.AirTicketPoint.controller;
 
 
-import lk.ijse.cmjd112.AirTicketPoint.dto.PlayGroundObj;
+import lk.ijse.cmjd112.AirTicketPoint.dto.PlayGroundObjDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/playground")
-public class PlayGround {
+public class PlayGroundController {
     @PostMapping("/{path}")
     public void getPathVariable(@PathVariable ("path") String pathVariable){
         System.out.println("Path Variable is :"+pathVariable);
@@ -29,12 +29,12 @@ public class PlayGround {
         System.out.println("Level is : "+level);
     }
     @PostMapping(value = "/play",consumes = "application/json",produces = MediaType.APPLICATION_JSON_VALUE)
-    public PlayGroundObj handlePlayGroundObj(@RequestBody PlayGroundObj playGroundObj){
+    public PlayGroundObjDTO handlePlayGroundObj(@RequestBody PlayGroundObjDTO playGroundObj){
         System.out.println("Playground is: "+playGroundObj);
         return playGroundObj;
     }
     @PostMapping(value = "/formal",consumes = "application/json",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PlayGroundObj> handlePlayGroundObjFormal(@RequestBody PlayGroundObj playGroundObj){
+    public ResponseEntity<PlayGroundObjDTO> handlePlayGroundObjFormal(@RequestBody PlayGroundObjDTO playGroundObj){
         System.out.println("Playground is: "+playGroundObj);
         return new ResponseEntity<>(playGroundObj, HttpStatus.CREATED);
     }
