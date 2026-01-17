@@ -20,5 +20,12 @@ public class AirPortController {
         System.out.println("Airport is: "+airportDTO);
         return new ResponseEntity<>(airportDTO, HttpStatus.CREATED);
     }
+    @GetMapping(value = "/{airportId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AirportDTO> getAirport(@PathVariable ("airportId") String airportIdentifier){
+        System.out.println("Airport ID is: "+airportIdentifier);
+        var airport = new AirportDTO("APT-f5deaf73-1c27-4be3-98dd-73483ef8cb4e",
+                "CMB", "Bandaranayake International Airport", "Katunayaka", "SL");
+        return new ResponseEntity<>(airport,HttpStatus.OK);
+    }
 
 }
