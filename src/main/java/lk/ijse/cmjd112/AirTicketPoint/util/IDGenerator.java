@@ -7,6 +7,10 @@ public class IDGenerator {
     public static String airportIDGen(){
         return "APT-"+ UUID.randomUUID();
     }
+    //user
+    public static String userIDGen(){
+        return "USR-"+ UUID.randomUUID();
+    }
 
 
 }
