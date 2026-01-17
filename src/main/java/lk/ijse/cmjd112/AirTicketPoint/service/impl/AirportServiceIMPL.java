@@ -3,9 +3,12 @@ package lk.ijse.cmjd112.AirTicketPoint.service.impl;
 import lk.ijse.cmjd112.AirTicketPoint.dto.AirportDTO;
 import lk.ijse.cmjd112.AirTicketPoint.service.AirportService;
 import lk.ijse.cmjd112.AirTicketPoint.util.IDGenerator;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AirportServiceIMPL implements AirportService {
     @Override
     public AirportDTO saveAirport(AirportDTO airportDTO) {

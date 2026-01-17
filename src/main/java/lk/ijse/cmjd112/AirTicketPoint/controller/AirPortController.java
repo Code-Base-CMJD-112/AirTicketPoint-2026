@@ -2,8 +2,11 @@ package lk.ijse.cmjd112.AirTicketPoint.controller;
 
 
 import lk.ijse.cmjd112.AirTicketPoint.dto.AirportDTO;
+import lk.ijse.cmjd112.AirTicketPoint.service.AirportService;
 import lk.ijse.cmjd112.AirTicketPoint.service.impl.AirportServiceIMPL;
 import lk.ijse.cmjd112.AirTicketPoint.util.IDGenerator;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +17,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/airports")
+@RequiredArgsConstructor
 public class AirPortController {
-     //Create an Airport
+    // Constructor injection - Support with Lombok - @RequiredArgsConstructor
+    private final AirportService airportService;
+
+     //Field Injection
+//    private AirportService airportService;
+
+    // Constructor injection
+//    public AirPortController(AirportService airportService) {
+//        this.airportService = airportService;
+//    }
+
+    //Create an Airport
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AirportDTO> saveAirport(@RequestBody AirportDTO airportDTO){
-        var airportServiceIMPL = new AirportServiceIMPL();
-        var savedAirport = airportServiceIMPL.saveAirport(airportDTO);
+//        var airportServiceIMPL = new AirportServiceIMPL();
+        var savedAirport = airportService.saveAirport(airportDTO);
         return new ResponseEntity<>(savedAirport, HttpStatus.CREATED);
     }
     @GetMapping(value = "/{airportId}",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -31,7 +46,6 @@ public class AirPortController {
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AirportDTO>> getAllAirports(){
-        var airportService= new AirportServiceIMPL();
         return new ResponseEntity<>(airportService.getAllAirports(),HttpStatus.OK);
     }
     @DeleteMapping("/{airportId}")
