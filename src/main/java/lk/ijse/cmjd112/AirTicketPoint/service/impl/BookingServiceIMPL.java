@@ -1,0 +1,36 @@
+package lk.ijse.cmjd112.AirTicketPoint.service.impl;
+
+import lk.ijse.cmjd112.AirTicketPoint.dto.BookingDTO;
+import lk.ijse.cmjd112.AirTicketPoint.service.BookingService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+@Service
+public class BookingServiceIMPL implements BookingService {
+
+    @Override
+    public void saveBooking(BookingDTO bookingId) {
+
+    }
+
+    @Override
+    public void updateBooking(String bookingId, BookingDTO booking) {
+
+    }
+
+    @Override
+    public void deleteBooking(String bookingId) {
+
+    }
+
+    @Override
+    public BookingDTO getBooking(String bookingId) {
+        return null;
+    }
+
+    @Override
+    public List<BookingDTO> getAllBookings() {
+        return List.of();
+    }
+}
