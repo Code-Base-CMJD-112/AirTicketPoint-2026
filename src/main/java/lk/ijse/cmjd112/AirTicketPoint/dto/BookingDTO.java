@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @Data
 public class BookingDTO implements Serializable {
     private String bookingId;
-    private String bookingRef;
     private LocalDateTime bookingDate;
     private int seatCount;
     private double totalAmount;

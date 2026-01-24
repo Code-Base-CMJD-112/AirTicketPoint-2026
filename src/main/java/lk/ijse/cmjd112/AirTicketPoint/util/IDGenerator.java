@@ -11,6 +11,10 @@ public class IDGenerator {
     public static String userIDGen(){
         return "USR-"+ UUID.randomUUID();
     }
+    //booking
+    public static String bookingIDGen(){
+        return "BKN-"+ UUID.randomUUID();
+    }
 
 
 }
