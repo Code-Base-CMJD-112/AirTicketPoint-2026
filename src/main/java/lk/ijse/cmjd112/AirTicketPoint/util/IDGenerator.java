@@ -20,5 +20,12 @@ public class IDGenerator {
         return "FGT-"+ UUID.randomUUID();
     }
 
+    //passenger
+    public static String passengerIDGen(){
+        return "PSG-"+ UUID.randomUUID();
+    }
+
+
+
 
 }
