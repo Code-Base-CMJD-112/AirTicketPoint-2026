@@ -15,6 +15,10 @@ public class IDGenerator {
     public static String bookingIDGen(){
         return "BKN-"+ UUID.randomUUID();
     }
+    //flight
+    public static String flightIDGen(){
+        return "FGT-"+ UUID.randomUUID();
+    }
 
 
 }
