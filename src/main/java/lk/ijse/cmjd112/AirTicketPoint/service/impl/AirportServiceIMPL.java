@@ -31,9 +31,10 @@ public class AirportServiceIMPL implements AirportService {
 
     @Override
     public AirportDTO getSelectedAirport(String airportId) {
-        System.out.println("Airport ID is: "+airportId);
-        return new AirportDTO("APT-f5deaf73-1c27-4be3-98dd-73483ef8cb4e",
-                "CMB", "Bandaranayake International Airport", "Katunayaka", "SL");
+        //Find the record exist
+        var foundAirport = airportDao.findById(airportId).orElseThrow(()
+                -> new RuntimeException("Data Not Found"));
+        return mappingDTOEntity.toAirportDTO(foundAirport);
     }
 
     @Override
