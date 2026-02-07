@@ -1,22 +1,30 @@
 package lk.ijse.cmjd112.AirTicketPoint.service.impl;
 
+import jakarta.transaction.Transactional;
+import lk.ijse.cmjd112.AirTicketPoint.dao.UserDao;
 import lk.ijse.cmjd112.AirTicketPoint.dto.AirportDTO;
 import lk.ijse.cmjd112.AirTicketPoint.dto.Role;
 import lk.ijse.cmjd112.AirTicketPoint.dto.UserDTO;
 import lk.ijse.cmjd112.AirTicketPoint.service.UserService;
 import lk.ijse.cmjd112.AirTicketPoint.util.IDGenerator;
+import lk.ijse.cmjd112.AirTicketPoint.util.MappingDTOEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class UserServiceIMPL implements UserService{
 
+    private final UserDao userDao;
+    private final MappingDTOEntity mappingDTOEntity;
+
     @Override
-    public UserDTO saveUser(UserDTO userDTO) {
+    public void saveUser(UserDTO userDTO) {
         userDTO.setUserId(IDGenerator.userIDGen());
-        System.out.println("User is: "+userDTO);
-        return userDTO;
+        userDao.save(mappingDTOEntity.toUserEntity(userDTO));
     }
 
     @Override

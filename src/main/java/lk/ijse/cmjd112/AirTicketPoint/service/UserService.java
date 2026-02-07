@@ -6,7 +6,7 @@ import lk.ijse.cmjd112.AirTicketPoint.dto.UserDTO;
 import java.util.List;
 
 public interface UserService {
-    UserDTO saveUser(UserDTO userDTO);
+    void saveUser(UserDTO userDTO);
     UserDTO getSelectedUser(String userId);
     List<UserDTO> getAllUsers ();
     void deleteUser(String usrId);
