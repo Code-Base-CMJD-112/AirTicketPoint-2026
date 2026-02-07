@@ -5,6 +5,8 @@ import lk.ijse.cmjd112.AirTicketPoint.dao.UserDao;
 import lk.ijse.cmjd112.AirTicketPoint.dto.AirportDTO;
 import lk.ijse.cmjd112.AirTicketPoint.dto.Role;
 import lk.ijse.cmjd112.AirTicketPoint.dto.UserDTO;
+import lk.ijse.cmjd112.AirTicketPoint.entities.UserEntity;
+import lk.ijse.cmjd112.AirTicketPoint.exception.DataNotFoundException;
 import lk.ijse.cmjd112.AirTicketPoint.service.UserService;
 import lk.ijse.cmjd112.AirTicketPoint.util.IDGenerator;
 import lk.ijse.cmjd112.AirTicketPoint.util.MappingDTOEntity;
@@ -29,8 +31,9 @@ public class UserServiceIMPL implements UserService{
 
     @Override
     public UserDTO getSelectedUser(String userId) {
-        System.out.println("User Id is "+userId);
-        return new UserDTO(userId,"Kamal","Silva","kamal@mail.com","kamal555", Role.ADMIN);
+        var foundUser =
+                userDao.findById(userId).orElseThrow(() -> new DataNotFoundException("User Not Found"));
+       return mappingDTOEntity.toUserDTO(foundUser);
     }
 
     @Override
