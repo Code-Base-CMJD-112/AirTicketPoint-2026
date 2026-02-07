@@ -40,21 +40,32 @@ public class FlightServiceIMPL implements FlightService {
 
     @Override
     public FlightDTO getSelectedFlight(String flightId) {
-        return null;
+        var foundFlight = flightDao.findById(flightId)
+                .orElseThrow(() -> new DataNotFoundException("Flight Not Found"));
+        return mappingDTOEntity.toFlightDTO(foundFlight);
     }
 
     @Override
     public List<FlightDTO> getAllFlights() {
-        return List.of();
+       return mappingDTOEntity.getFlightDTOList(flightDao.findAll());
     }
 
     @Override
     public void deleteFlight(String flightId) {
-
+         flightDao.findById(flightId)
+                .orElseThrow(() -> new DataNotFoundException("Flight Not Found"));
+         flightDao.deleteById(flightId);
     }
 
     @Override
     public void updateFlight(String flightId, FlightDTO flightDTO) {
-
+        var foundFlight = flightDao.findById(flightId)
+                .orElseThrow(() -> new DataNotFoundException("Flight Not Found"));
+        foundFlight.setArrivalTime(flightDTO.getArrivalTime());
+        foundFlight.setDepartureTime(flightDTO.getDepartureTime());
+        foundFlight.setTotalSeats(flightDTO.getTotalSeats());
+        foundFlight.setAvailableSeats(flightDTO.getAvailableSeats());
+        foundFlight.setBaseFare(flightDTO.getBaseFare());
+        foundFlight.setStatus(flightDTO.getStatus());
     }
 }
