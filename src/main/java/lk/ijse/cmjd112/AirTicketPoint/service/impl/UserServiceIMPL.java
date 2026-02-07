@@ -49,8 +49,13 @@ public class UserServiceIMPL implements UserService{
 
     @Override
     public void updateUser(String userId, UserDTO updateUser) {
-        updateUser.setUserId(userId);
-        System.out.println("User Id is: "+userId);
-        System.out.println("Updated user is: "+updateUser);
+        var foundUser =
+                userDao.findById(userId).orElseThrow(() -> new DataNotFoundException("User Not Found"));
+
+        foundUser.setEmail(updateUser.getEmail());
+        foundUser.setEmail(updateUser.getEmail());
+        foundUser.setRole(updateUser.getRole());
+        foundUser.setFirstName(updateUser.getFirstName());
+        foundUser.setLastName(updateUser.getLastName());
     }
 }
