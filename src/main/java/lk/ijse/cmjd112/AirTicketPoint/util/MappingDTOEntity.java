@@ -1,8 +1,12 @@
 package lk.ijse.cmjd112.AirTicketPoint.util;
 
 import lk.ijse.cmjd112.AirTicketPoint.dto.AirportDTO;
+import lk.ijse.cmjd112.AirTicketPoint.dto.BookingDTO;
+import lk.ijse.cmjd112.AirTicketPoint.dto.FlightDTO;
 import lk.ijse.cmjd112.AirTicketPoint.dto.UserDTO;
 import lk.ijse.cmjd112.AirTicketPoint.entities.AirportEntity;
+import lk.ijse.cmjd112.AirTicketPoint.entities.BookingEntity;
+import lk.ijse.cmjd112.AirTicketPoint.entities.FlightEntity;
 import lk.ijse.cmjd112.AirTicketPoint.entities.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -35,5 +39,25 @@ public class MappingDTOEntity {
     }
     public List<UserDTO> getuserDTOList(List<UserEntity> userEntities){
         return modelMapper.map(userEntities, new TypeToken<List<UserDTO>>(){}.getType());
+    }
+    //Booking
+    public BookingDTO toBookingDTO(BookingEntity bookingEntity){
+        return modelMapper.map(bookingEntity, BookingDTO.class);
+    }
+    public BookingEntity toBookingEntity(BookingDTO bookingDTO){
+        return modelMapper.map(bookingDTO, BookingEntity.class);
+    }
+    public List<BookingDTO> getBookingDTOList(List<BookingEntity> bookingEntities){
+        return modelMapper.map(bookingEntities, new TypeToken<List<BookingDTO>>(){}.getType());
+    }
+    //Flight
+    public FlightDTO toFlightDTO(FlightEntity flightEntity){
+        return modelMapper.map(flightEntity, FlightDTO.class);
+    }
+    public FlightEntity toFlightEntity(FlightDTO flightDTO){
+        return modelMapper.map(flightDTO, FlightEntity.class);
+    }
+    public List<FlightDTO> getFlightDTOList(List<FlightEntity> flightEntityList){
+        return modelMapper.map(flightEntityList, new TypeToken<List<FlightDTO>>(){}.getType());
     }
 }

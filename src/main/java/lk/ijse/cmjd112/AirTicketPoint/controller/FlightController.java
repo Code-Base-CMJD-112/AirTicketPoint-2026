@@ -19,7 +19,8 @@ public class FlightController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FlightDTO> saveFlight(@RequestBody FlightDTO flightDTO){
-        return new ResponseEntity<>(flightService.saveFlight(flightDTO), HttpStatus.CREATED);
+        flightService.saveFlight(flightDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{flightId}",produces = MediaType.APPLICATION_JSON_VALUE)
