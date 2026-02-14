@@ -28,8 +28,6 @@ public class BookingServiceIMPL implements BookingService {
     private final UserDao userDao;
     private final FlightDao flightDao;
 
-
-
     @Override
     public void saveBooking(BookingDTO booking) {
         var extractFlight = flightDao.findById(booking.getFlightId())
