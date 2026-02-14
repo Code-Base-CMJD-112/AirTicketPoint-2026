@@ -9,6 +9,7 @@ import lk.ijse.cmjd112.AirTicketPoint.entities.BookingEntity;
 import lk.ijse.cmjd112.AirTicketPoint.entities.FlightEntity;
 import lk.ijse.cmjd112.AirTicketPoint.entities.UserEntity;
 import lk.ijse.cmjd112.AirTicketPoint.exception.DataNotFoundException;
+import lk.ijse.cmjd112.AirTicketPoint.exception.DataSaveException;
 import lk.ijse.cmjd112.AirTicketPoint.service.BookingService;
 import lk.ijse.cmjd112.AirTicketPoint.util.DateTimeUtil;
 import lk.ijse.cmjd112.AirTicketPoint.util.IDGenerator;
@@ -43,8 +44,14 @@ public class BookingServiceIMPL implements BookingService {
                 : booking.getBookingDate());
         bookingEntity.setFlight(extractFlight);
         bookingEntity.setUser(extractUser);
-        bookingDao.save(bookingEntity);
 
+        //seat avilability
+        if(flightDao.getAvlSeats(booking.getFlightId()) < booking.getSeatCount()){
+            throw new DataSaveException("No avilable seats");
+        }
+        bookingDao.save(bookingEntity);
+        //deduct avl seats
+        flightDao.deductAvlSeatCount(booking.getSeatCount(),booking.getFlightId());
     }
 
     @Override
