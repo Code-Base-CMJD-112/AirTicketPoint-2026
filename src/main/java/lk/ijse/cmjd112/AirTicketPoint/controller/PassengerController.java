@@ -19,8 +19,9 @@ public class PassengerController {
     private final PassengerService passengerService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PassengerDTO> savePassenger(@RequestBody PassengerDTO passenger){
-        return new ResponseEntity<>(passengerService.savePassenger(passenger), HttpStatus.CREATED);
+    public ResponseEntity<Void> savePassenger(@RequestBody PassengerDTO passenger){
+        passengerService.savePassenger(passenger);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping(value = "/{passengerId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PassengerDTO> getSelectedPassenger(@PathVariable ("passengerId") String passengerIdentifier){

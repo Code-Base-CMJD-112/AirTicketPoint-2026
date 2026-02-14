@@ -9,7 +9,9 @@ import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static lk.ijse.cmjd112.AirTicketPoint.util.CustomStatus.DATA_NOT_FOUND;
+import java.sql.SQLIntegrityConstraintViolationException;
+
+import static lk.ijse.cmjd112.AirTicketPoint.util.CustomStatus.*;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -17,6 +19,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorMessage> handleDataNotFoundException(DataNotFoundException ex){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(new ErrorMessage(ex.getMessage(),DATA_NOT_FOUND));
+    }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public ResponseEntity<ErrorMessage> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException ex){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorMessage(DELETE_CONSTRAINT,CANNOT_DELETE));
     }
 
 }

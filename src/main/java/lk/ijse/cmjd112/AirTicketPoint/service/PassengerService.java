@@ -6,7 +6,7 @@ import lk.ijse.cmjd112.AirTicketPoint.dto.PassengerDTO;
 import java.util.List;
 
 public interface PassengerService {
-    PassengerDTO savePassenger(PassengerDTO passengerDTO);
+    void savePassenger(PassengerDTO passengerDTO);
     PassengerDTO getSelectedPassenger(String passengerId);
     List<PassengerDTO> getAllPassengers();
     void deletePassenger (String passengerId);
