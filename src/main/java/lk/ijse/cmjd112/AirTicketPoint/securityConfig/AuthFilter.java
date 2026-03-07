@@ -1,4 +1,4 @@
-package lk.ijse.cmjd112.AirTicketPoint.config;
+package lk.ijse.cmjd112.AirTicketPoint.securityConfig;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -10,13 +10,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-public class TestFilter extends OncePerRequestFilter {
+public class AuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-
-        System.out.println(request.getHeader("Authorization"));
+         // Todo: IMPL
         filterChain.doFilter(request,response);
 
     }
