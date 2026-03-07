@@ -1,11 +1,8 @@
 package lk.ijse.cmjd112.AirTicketPoint.controller;
 
-import lk.ijse.cmjd112.AirTicketPoint.dto.Role;
-import lk.ijse.cmjd112.AirTicketPoint.dto.UserDTO;
+import lk.ijse.cmjd112.AirTicketPoint.dto.secure.UserDTO;
 import lk.ijse.cmjd112.AirTicketPoint.service.UserService;
-import lk.ijse.cmjd112.AirTicketPoint.util.IDGenerator;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

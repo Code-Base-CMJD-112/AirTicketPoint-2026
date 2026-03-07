@@ -1,4 +1,4 @@
-package lk.ijse.cmjd112.AirTicketPoint.dto;
+package lk.ijse.cmjd112.AirTicketPoint.dto.secure;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,11 +8,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserDTO implements Serializable {
-    private String userId;
-    private String firstName;
-    private String lastName;
+public class Login implements Serializable {
     private String email;
     private String password;
-    private Role role;
 }

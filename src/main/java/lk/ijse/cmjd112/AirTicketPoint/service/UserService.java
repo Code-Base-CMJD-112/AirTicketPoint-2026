@@ -1,7 +1,6 @@
 package lk.ijse.cmjd112.AirTicketPoint.service;
 
-import lk.ijse.cmjd112.AirTicketPoint.dto.AirportDTO;
-import lk.ijse.cmjd112.AirTicketPoint.dto.UserDTO;
+import lk.ijse.cmjd112.AirTicketPoint.dto.secure.UserDTO;
 
 import java.util.List;
 
