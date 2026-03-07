@@ -7,6 +7,7 @@ import lk.ijse.cmjd112.AirTicketPoint.service.secure.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,11 +18,11 @@ public class AuthController {
 
     private final AuthService authService;
     @PostMapping("/login")
-    public ResponseEntity<JWTResponseDTO> login(LoginDTO loginDTO) {
+    public ResponseEntity<JWTResponseDTO> login( @RequestBody LoginDTO loginDTO) {
         return ResponseEntity.ok(authService.login(loginDTO));
     }
     @PostMapping("/signup")
-    public ResponseEntity<JWTResponseDTO> signUp(UserDTO userDTO) {
+    public ResponseEntity<JWTResponseDTO> signUp(@RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(authService.register(userDTO));
     }
 
