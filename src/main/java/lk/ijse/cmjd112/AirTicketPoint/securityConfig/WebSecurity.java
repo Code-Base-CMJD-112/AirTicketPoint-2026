@@ -39,6 +39,7 @@ public class WebSecurity {
     }
 
     //Filter Chain
+    @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)

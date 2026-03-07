@@ -30,13 +30,13 @@ public class JWTUtils {
        this.key = Keys.hmacShaKeyFor(keyBytes);
     }
     //Token Generate
-    public String generateToken(String username, Collection<? extends GrantedAuthority> authorities){
+    public String generateToken(String email, Collection<? extends GrantedAuthority> authorities){
             String role = authorities.stream()
                     .map(GrantedAuthority ::getAuthority)
                     .collect(Collectors.joining(","));
 
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(email)
                 .claim("role",role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
