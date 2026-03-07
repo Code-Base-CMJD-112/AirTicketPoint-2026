@@ -5,16 +5,12 @@ import lk.ijse.cmjd112.AirTicketPoint.dao.BookingDao;
 import lk.ijse.cmjd112.AirTicketPoint.dao.FlightDao;
 import lk.ijse.cmjd112.AirTicketPoint.dao.UserDao;
 import lk.ijse.cmjd112.AirTicketPoint.dto.BookingDTO;
-import lk.ijse.cmjd112.AirTicketPoint.entities.BookingEntity;
-import lk.ijse.cmjd112.AirTicketPoint.entities.FlightEntity;
-import lk.ijse.cmjd112.AirTicketPoint.entities.UserEntity;
 import lk.ijse.cmjd112.AirTicketPoint.exception.DataNotFoundException;
 import lk.ijse.cmjd112.AirTicketPoint.exception.DataSaveException;
 import lk.ijse.cmjd112.AirTicketPoint.service.BookingService;
 import lk.ijse.cmjd112.AirTicketPoint.util.DateTimeUtil;
 import lk.ijse.cmjd112.AirTicketPoint.util.IDGenerator;
 import lk.ijse.cmjd112.AirTicketPoint.util.MappingDTOEntity;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

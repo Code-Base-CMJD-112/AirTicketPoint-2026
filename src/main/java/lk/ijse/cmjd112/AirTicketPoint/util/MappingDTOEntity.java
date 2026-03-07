@@ -2,6 +2,7 @@ package lk.ijse.cmjd112.AirTicketPoint.util;
 
 import lk.ijse.cmjd112.AirTicketPoint.dto.*;
 import lk.ijse.cmjd112.AirTicketPoint.entities.*;
+import lk.ijse.cmjd112.AirTicketPoint.entities.secure.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;

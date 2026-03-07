@@ -2,10 +2,7 @@ package lk.ijse.cmjd112.AirTicketPoint.service.impl;
 
 import jakarta.transaction.Transactional;
 import lk.ijse.cmjd112.AirTicketPoint.dao.UserDao;
-import lk.ijse.cmjd112.AirTicketPoint.dto.AirportDTO;
-import lk.ijse.cmjd112.AirTicketPoint.dto.Role;
 import lk.ijse.cmjd112.AirTicketPoint.dto.UserDTO;
-import lk.ijse.cmjd112.AirTicketPoint.entities.UserEntity;
 import lk.ijse.cmjd112.AirTicketPoint.exception.DataNotFoundException;
 import lk.ijse.cmjd112.AirTicketPoint.service.UserService;
 import lk.ijse.cmjd112.AirTicketPoint.util.IDGenerator;
